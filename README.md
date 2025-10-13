@@ -66,6 +66,15 @@ https://www.youtube.com/watch?v=memf04unFeI
 Text Classification: Handling 1000+ Classes with Generative AI | Amazon Web Services    
 https://github.com/aws-samples/sample-extreme-text-classifier
 
+https://www.youtube.com/watch?v=xVSNX6E3o7g
+AWS AI Agent Hackathon: Shape the Future of AI Agents | Amazon Web Services
+
+https://www.youtube.com/watch?v=D6AD73l0WgM
+Deep Dive with AWS! Amazon Bedrock - AI Agents | S1 E3 | Implementing agents
+
+https://www.youtube.com/watch?v=kNgVybis1ak
+Context Engineering: Building Context-Aware AI Agents with Amazon Bedrock AgentCore Memory
+
 # Links
 
 - [Building Intelligent Agents with Strands: A Hands-On Guide](https://www.youtube.com/watch?v=TD2ihEBkdkY)
