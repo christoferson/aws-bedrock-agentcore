@@ -75,6 +75,24 @@ Deep Dive with AWS! Amazon Bedrock - AI Agents | S1 E3 | Implementing agents
 https://www.youtube.com/watch?v=kNgVybis1ak
 Context Engineering: Building Context-Aware AI Agents with Amazon Bedrock AgentCore Memory
 
+https://www.youtube.com/watch?v=Ds7z4JA5gB4
+Epsilon Transforms Marketing Campaigns with Amazon Bedrock AgentCore | Amazon Web Services
+
+
+https://www.youtube.com/watch?v=TjTgHA5DjDM
+Breaking multi-agent silos: A2A + MCP in action with Strands Agents
+
+https://www.youtube.com/watch?v=yFnKsh8yxA4
+Amazon EKS Auto Mode: Deploying AI Agents with Kubernetes
+
+https://www.youtube.com/watch?v=I36oUHfSs7M
+The AWS Pulse | EP02 | GenAI Powered Analytics
+---
+
+AgentCore starter toolkit
+https://github.com/aws/bedrock-agentcore-starter-toolkit?tab=readme-ov-file
+https://aws.github.io/bedrock-agentcore-starter-toolkit/user-guide/runtime/quickstart.html
+
 # Links
 
 - [Building Intelligent Agents with Strands: A Hands-On Guide](https://www.youtube.com/watch?v=TD2ihEBkdkY)
