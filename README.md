@@ -87,11 +87,16 @@ Amazon EKS Auto Mode: Deploying AI Agents with Kubernetes
 
 https://www.youtube.com/watch?v=I36oUHfSs7M
 The AWS Pulse | EP02 | GenAI Powered Analytics
+
+https://www.youtube.com/watch?v=30AVf2gf_HE
+Agentic AI in Action: Turning Data into Outcomes | Amazon Web Services
 ---
 
 AgentCore starter toolkit
 https://github.com/aws/bedrock-agentcore-starter-toolkit?tab=readme-ov-file
 https://aws.github.io/bedrock-agentcore-starter-toolkit/user-guide/runtime/quickstart.html
+
+
 
 # Links
 

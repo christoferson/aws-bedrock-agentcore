@@ -31,3 +31,23 @@ uv run my_agent.py
 curl -X POST http://localhost:8080/invocations -H "Content-Type: application/json" -d "{\"prompt\": \"Hello!\"}"
 
 {"result": {"role": "assistant", "content": [{"text": "Hello! It's nice to meet you. How are you doing today? Is there anything I can help you with?"}]}}
+
+# Configure
+
+agentcore configure -e my_agent.py -r us-east-1
+
+# Deploy
+
+agentcore launch
+
+# Test Invoke (CLI)
+
+agentcore invoke "{\"prompt\": \"tell me a joke\"}"
+
+
+Response:
+{"result": {"role": "assistant", "content": [{"text": "Why don't scientists trust atoms?\n\nBecause they make up everything!"}]}}
+
+# Test Invoke (boto3)
+uv run invoke_agent.py
+{'result': {'role': 'assistant', 'content': [{'text': "Why don't scientists trust atoms?\n\nBecause they make up everything!"}]}}

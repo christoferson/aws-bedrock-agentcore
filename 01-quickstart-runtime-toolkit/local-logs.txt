@@ -1,0 +1,216 @@
+(01-quickstart-runtime-toolkit) C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit>agentcore configure -e my_agent.py -r us-east-1
+Configuring Bedrock AgentCore...
+✓ Using file: my_agent.py
+
+🏷️   Inferred agent name: my_agent
+Press Enter to use this name, or type a different one (alphanumeric without '-')
+Agent name [my_agent]:
+✓ Using agent name: my_agent
+
+🔍 Detected dependency file: requirements.txt
+Press Enter to use this file, or type a different path (use Tab for autocomplete):
+Path or Press Enter to use detected dependency file: requirements.txt
+✓ Using requirements file: requirements.txt
+
+🔐 Execution Role
+Press Enter to auto-create execution role, or provide execution role ARN/name to use existing
+Execution role ARN/name (or press Enter to auto-create):
+✓ Will auto-create execution role
+
+🏗️   ECR Repository
+Press Enter to auto-create ECR repository, or provide ECR Repository URI to use existing
+ECR Repository URI (or press Enter to auto-create):
+✓ Will auto-create ECR repository
+
+🔐 Authorization Configuration
+By default, Bedrock AgentCore uses IAM authorization.
+Configure OAuth authorizer instead? (yes/no) [no]: no
+✓ Using default IAM authorization
+
+🔒 Request Header Allowlist
+Configure which request headers are allowed to pass through to your agent.
+Common headers: Authorization, X-Amzn-Bedrock-AgentCore-Runtime-Custom-*
+Configure request header allowlist? (yes/no) [no]: no
+✓ Using default request header configuration
+Configuring BedrockAgentCore agent: my_agent
+
+💡 No container engine found (Docker/Finch/Podman not installed)
+✓ Default deployment uses CodeBuild (no container engine needed), For local builds, install Docker, Finch, or Podman
+
+Memory Configuration
+Tip: Use --disable-memory flag to skip memory entirely
+
+No region configured yet, proceeding with new memory creation
+✓ Short-term memory will be enabled (default)
+  • Stores conversations within sessions
+  • Provides immediate context recall
+
+Optional: Long-term memory
+  • Extracts user preferences across sessions
+  • Remembers facts and patterns
+  • Creates session summaries
+  • Note: Takes 120-180 seconds to process
+
+Enable long-term memory? (yes/no) [no]: yes
+✓ Configuring short-term + long-term memory
+Will create new memory with mode: STM_AND_LTM
+Memory configuration: Short-term + Long-term memory enabled
+
+⚠️ Platform mismatch: Current system is 'linux/amd64' but Bedrock AgentCore requires 'linux/arm64', so local builds won't work.
+Please use default launch command which will do a remote cross-platform build using code build.For deployment other options and workarounds, see:
+https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/getting-started-custom.html
+
+Generated .dockerignore
+Generated Dockerfile: .bedrock_agentcore\my_agent\Dockerfile
+Setting 'my_agent' as default agent
+┌─────────────────────────────────────────────────────────────────────────────────────────────── Configuration Success ────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Agent Details                                                                                                                                                                                                        │
+│ Agent Name: my_agent                                                                                                                                                                                                 │
+│ Runtime: None                                                                                                                                                                                                        │
+│ Region: us-east-1                                                                                                                                                                                                    │
+│ Account: 087959962433                                                                                                                                                                                                │
+│                                                                                                                                                                                                                      │
+│ Configuration                                                                                                                                                                                                        │
+│ Execution Role: Auto-create                                                                                                                                                                                          │
+│ ECR Repository: Auto-create                                                                                                                                                                                          │
+│ Authorization: IAM (default)                                                                                                                                                                                         │
+│                                                                                                                                                                                                                      │
+│                                                                                                                                                                                                                      │
+│ Memory: Short-term memory (30-day retention)                                                                                                                                                                         │
+│                                                                                                                                                                                                                      │
+│ 📄 Config saved to: C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit\.bedrock_agentcore.yaml                                                                                                             │
+│                                                                                                                                                                                                                      │
+│ Next Steps:                                                                                                                                                                                                          │
+│    agentcore launch                                                                                                                                                                                                  │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+(01-quickstart-runtime-toolkit) C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit>agentcore launch
+🚀 Launching Bedrock AgentCore (codebuild mode - RECOMMENDED)...
+   • Build ARM64 containers in the cloud with CodeBuild
+   • No local Docker required (DEFAULT behavior)
+   • Production-ready deployment
+
+💡 Deployment options:
+   • agentcore launch                → CodeBuild (current)
+   • agentcore launch --local        → Local development
+   • agentcore launch --local-build  → Local build + cloud deploy
+
+Creating memory resource for agent: my_agent
+⠸ Launching Bedrock AgentCore...✅ MemoryManager initialized for region: us-east-1
+⠼ Launching Bedrock AgentCore...Creating new memory with LTM strategies...
+⠙ Launching Bedrock AgentCore...Created memory: my_agent_mem-m4tAlB5KyC
+Memory created but flag was False - correcting to True
+✅ New memory created: my_agent_mem-m4tAlB5KyC (provisioning in background)
+Starting CodeBuild ARM64 deployment for agent 'my_agent' to account 087959962433 (us-east-1)
+⠸ Launching Bedrock AgentCore...Setting up AWS resources (ECR repository, execution roles)...
+Getting or creating ECR repository for agent: my_agent
+Repository doesn't exist, creating new ECR repository: bedrock-agentcore-my_agent
+⠦ Launching Bedrock AgentCore...✅ ECR repository available: 087959962433.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-my_agent
+Getting or creating execution role for agent: my_agent
+Using AWS region: us-east-1, account ID: 087959962433
+Role name: AmazonBedrockAgentCoreSDKRuntime-us-east-1-e72c1a7c7a
+Role doesn't exist, creating new execution role: AmazonBedrockAgentCoreSDKRuntime-us-east-1-e72c1a7c7a
+Starting execution role creation process for agent: my_agent
+⠋✓ Role creating: AmazonBedrockAgentCoreSDKRuntime-us-east-1-e72c1a7c7a
+ Launching Bedrock AgentCore...Creating IAM role: AmazonBedrockAgentCoreSDKRuntime-us-east-1-e72c1a7c7a
+⠸ Launching Bedrock AgentCore...✓ Role created: arn:aws:iam::087959962433:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-e72c1a7c7a
+⠦ Launching Bedrock AgentCore...✓ Execution policy attached: BedrockAgentCoreRuntimeExecutionPolicy-my_agent
+Role creation complete and ready for use with Bedrock AgentCore
+
+Preparing CodeBuild project and uploading source...
+
+Role name: AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e72c1a7c7a
+⠏ Launching Bedrock AgentCore...CodeBuild role doesn't exist, creating new role: AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e72c1a7c7a
+Creating IAM role: AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e72c1a7c7a
+⠏ Launching Bedrock AgentCore...✓ Role created: arn:aws:iam::087959962433:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e72c1a7c7a
+Attaching inline policy: CodeBuildExecutionPolicy to role: AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e72c1a7c7a
+⠸ Launching Bedrock AgentCore...✓ Policy attached: CodeBuildExecutionPolicy
+Waiting for IAM role propagation...
+⠇ Launching Bedrock AgentCore...CodeBuild execution role creation complete: arn:aws:iam::087959962433:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e72c1a7c7a
+⠼ Launching Bedrock AgentCore...Created S3 bucket: bedrock-agentcore-codebuild-sources-087959962433-us-east-1
+Using dockerignore.template with 45 patterns for zip filtering
+⠴ Launching Bedrock AgentCore...Including Dockerfile from C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit\.bedrock_agentcore\my_agent in source.zip
+⠸ Launching Bedrock AgentCore...Uploaded source to S3: my_agent/source.zip
+⠼ Launching Bedrock AgentCore...Created CodeBuild project: bedrock-agentcore-my_agent-builder
+Starting CodeBuild build (this may take several minutes)...
+⠏ Launching Bedrock AgentCore...Starting CodeBuild monitoring...
+⠹ Launching Bedrock AgentCore...🔄 QUEUED started (total: 0s)
+⠦ Launching Bedrock AgentCore...✅ QUEUED completed in 1.2s
+🔄 PROVISIONING started (total: 1s)
+⠼ Launching Bedrock AgentCore...✅ PROVISIONING completed in 8.5s
+🔄 DOWNLOAD_SOURCE started (total: 10s)
+⠼ Launching Bedrock AgentCore...✅ DOWNLOAD_SOURCE completed in 2.4s
+🔄 BUILD started (total: 12s)
+⠙ Launching Bedrock AgentCore...✅ BUILD completed in 13.3s
+🔄 POST_BUILD started (total: 26s)
+⠧ Launching Bedrock AgentCore...✅ POST_BUILD completed in 6.1s
+🔄 FINALIZING started (total: 32s)
+⠹ Launching Bedrock AgentCore...✅ FINALIZING completed in 1.2s
+🔄 COMPLETED started (total: 33s)
+⠧ Launching Bedrock AgentCore...✅ COMPLETED completed in 1.2s
+🎉 CodeBuild completed successfully in 0m 34s
+CodeBuild completed successfully
+✅ CodeBuild project configuration saved
+Deploying to Bedrock AgentCore...
+Passing memory configuration to agent: my_agent_mem-m4tAlB5KyC
+⠋ Launching Bedrock AgentCore...✅ Agent created/updated: arn:aws:bedrock-agentcore:us-east-1:087959962433:runtime/my_agent-OjE0ymDJk3
+Observability is enabled, configuring Transaction Search...
+⠧ Launching Bedrock AgentCore...Created/updated CloudWatch Logs resource policy
+⠦ Launching Bedrock AgentCore...Configured X-Ray trace segment destination to CloudWatch Logs
+⠇ Launching Bedrock AgentCore...X-Ray indexing rule already configured
+✅ Transaction Search configured: resource_policy, trace_destination
+🔍 GenAI Observability Dashboard:
+   https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/agent-core
+Polling for endpoint to be ready...
+⠼ Launching Bedrock AgentCore...Agent endpoint: arn:aws:bedrock-agentcore:us-east-1:087959962433:runtime/my_agent-OjE0ymDJk3/runtime-endpoint/DEFAULT
+Deployment completed successfully - Agent: arn:aws:bedrock-agentcore:us-east-1:087959962433:runtime/my_agent-OjE0ymDJk3
+┌───────────────────────────────────────────────────────────────────────────────────────────────── Deployment Success ─────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Agent Details:                                                                                                                                                                                                       │
+│ Agent Name: my_agent                                                                                                                                                                                                 │
+│ Agent ARN: arn:aws:bedrock-agentcore:us-east-1:087959962433:runtime/my_agent-OjE0ymDJk3                                                                                                                              │
+│ ECR URI: 087959962433.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-my_agent:latest                                                                                                                              │
+│ CodeBuild ID: bedrock-agentcore-my_agent-builder:b76c95f9-65a9-4b20-bb05-ec6b63010f9b                                                                                                                                │
+│                                                                                                                                                                                                                      │
+│ 🚀 ARM64 container deployed to Bedrock AgentCore                                                                                                                                                                     │
+│                                                                                                                                                                                                                      │
+│ Next Steps:                                                                                                                                                                                                          │
+│    agentcore status                                                                                                                                                                                                  │
+│    agentcore invoke '{"prompt": "Hello"}'                                                                                                                                                                            │
+│                                                                                                                                                                                                                      │
+│ 📋 CloudWatch Logs:                                                                                                                                                                                                  │
+│    /aws/bedrock-agentcore/runtimes/my_agent-OjE0ymDJk3-DEFAULT --log-stream-name-prefix "2025/10/15/[runtime-logs]"                                                                                                  │
+│    /aws/bedrock-agentcore/runtimes/my_agent-OjE0ymDJk3-DEFAULT --log-stream-names "otel-rt-logs"                                                                                                                     │
+│                                                                                                                                                                                                                      │
+│ 🔍 GenAI Observability Dashboard:                                                                                                                                                                                    │
+│    https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/agent-core                                                                                                                   │
+│                                                                                                                                                                                                                      │
+│ ⏱️  Note: Observability data may take up to 10 minutes to appear after first launch                                                                                                                                   │
+│                                                                                                                                                                                                                      │
+│ 💡 Tail logs with:                                                                                                                                                                                                   │
+│    aws logs tail /aws/bedrock-agentcore/runtimes/my_agent-OjE0ymDJk3-DEFAULT --log-stream-name-prefix "2025/10/15/[runtime-logs]" --follow                                                                           │
+│    aws logs tail /aws/bedrock-agentcore/runtimes/my_agent-OjE0ymDJk3-DEFAULT --log-stream-name-prefix "2025/10/15/[runtime-logs]" --since 1h                                                                         │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+(01-quickstart-runtime-toolkit) C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit>agentcore invoke '{"prompt": "tell me a joke"}'
+Usage: agentcore invoke [OPTIONS] PAYLOAD
+Try 'agentcore invoke --help' for help.
+┌─ Error ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Got unexpected extra argument (tell me a joke}')                                                                                                                                                                     │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+(01-quickstart-runtime-toolkit) C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit>agentcore invoke "{\"prompt\": \"tell me a joke\"}"
+✅ MemoryManager initialized for region: us-east-1
+Memory is active, proceeding with invoke
+┌────────────────────────────────────────────────────────────────────────────────────────────────────── my_agent ──────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Session: 43a3d5a4-b2b7-4087-ac03-bcdd1a61c9eb                                                                                                                                                                        │
+│ Request ID: cd3078f2-f04c-4b5f-9aad-2c83f208cd3f                                                                                                                                                                     │
+│ ARN: arn:aws:bedrock-agentcore:us-east-1:087959962433:runtime/my_agent-OjE0ymDJk3                                                                                                                                    │
+│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/my_agent-OjE0ymDJk3-DEFAULT --log-stream-name-prefix "2025/10/15/[runtime-logs]" --follow                                                                        │
+│       aws logs tail /aws/bedrock-agentcore/runtimes/my_agent-OjE0ymDJk3-DEFAULT --log-stream-name-prefix "2025/10/15/[runtime-logs]" --since 1h                                                                      │
+│ GenAI Dashboard: https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/agent-core                                                                                                     │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+{"result": {"role": "assistant", "content": [{"text": "Why don't scientists trust atoms?\n\nBecause they make up everything!"}]}}
+
+(01-quickstart-runtime-toolkit) C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit>

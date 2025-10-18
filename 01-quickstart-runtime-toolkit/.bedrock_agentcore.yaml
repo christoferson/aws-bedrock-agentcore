@@ -1,0 +1,41 @@
+default_agent: my_agent
+agents:
+  my_agent:
+    name: my_agent
+    entrypoint: C:/codes/aws-bedrock-agentcore/01-quickstart-runtime-toolkit/my_agent.py
+    platform: linux/arm64
+    container_runtime: none
+    source_path: C:\codes\aws-bedrock-agentcore\01-quickstart-runtime-toolkit
+    aws:
+      execution_role: arn:aws:iam::087959962433:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-e72c1a7c7a
+      execution_role_auto_create: false
+      account: 087959962433
+      region: us-east-1
+      ecr_repository: 087959962433.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-my_agent
+      ecr_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+    bedrock_agentcore:
+      agent_id: my_agent-OjE0ymDJk3
+      agent_arn: arn:aws:bedrock-agentcore:us-east-1:087959962433:runtime/my_agent-OjE0ymDJk3
+      agent_session_id: 43a3d5a4-b2b7-4087-ac03-bcdd1a61c9eb
+    codebuild:
+      project_name: bedrock-agentcore-my_agent-builder
+      execution_role: arn:aws:iam::087959962433:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-e72c1a7c7a
+      source_bucket: bedrock-agentcore-codebuild-sources-087959962433-us-east-1
+    memory:
+      mode: STM_AND_LTM
+      memory_id: my_agent_mem-m4tAlB5KyC
+      memory_arn: arn:aws:bedrock-agentcore:us-east-1:087959962433:memory/my_agent_mem-m4tAlB5KyC
+      memory_name: my_agent_mem
+      event_expiry_days: 30
+      first_invoke_memory_check_done: true
+      was_created_by_toolkit: true
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
